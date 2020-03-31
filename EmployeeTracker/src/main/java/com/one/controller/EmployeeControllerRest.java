@@ -15,8 +15,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
+import com.one.model.Department;
 import com.one.model.Employee;
+import com.one.repository.DepartmentRepository;
 import com.one.repository.EmployeeRepository;
 import com.one.repository.EmployeeRepositoryPage;
 
@@ -25,9 +28,12 @@ public class EmployeeControllerRest {
 	
 	@Autowired
 	EmployeeRepository empRepo;
+	
+	@Autowired
 	EmployeeRepositoryPage empPage;
 
-	
+	@Autowired
+	DepartmentRepository depRepo;	
 	
 	@PostMapping("/addEmployeeRest")
 	@ResponseBody
@@ -75,5 +81,22 @@ public class EmployeeControllerRest {
 //		return empPage.findByIdSorted(paging);
 //		
 //	}
+	
+	@RequestMapping(path ="/fetchDepartmentfromEmp", produces = {"application/json"})
+	@ResponseBody
+	public List<Department> departmentListDetail() {
+		//System.out.println("here");
+		//List<Department> departments = depRepo.findAll();
+		
+//		for(Department dp: departments) {
+//		System.out.println("list of all department");
+//		System.out.println(dp);
+//		}
+//		ModelAndView mv = new ModelAndView();
+//		mv.addObject("DeptObject",departments);
+//		mv.setViewName("ViewEmployee");
+		return depRepo.findAll();
+	}
+		
 		
 }

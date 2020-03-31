@@ -42,17 +42,16 @@ public class EmployeeController {
 		System.out.println("Controller Check");
 	}
 	
-	@ResponseBody
-	public ModelAndView departmentListDetail() {
-		List<Department> department = depRepo.findAll();
-		for(Department dp: department) {
-		System.out.println(dp);
-		}
-		ModelAndView mv = new ModelAndView();
-		mv.addObject("DeptObject",department);
-		mv.setViewName("ViewEmployee");
-		return mv;
-	}
+//	@GetMapping("showFormEmployee")
+//	public ModelAndView departmentListDetail() {
+//		
+//		List<Department> departments = depRepo.findAll();
+//
+//		ModelAndView mv = new ModelAndView();
+//		mv.addObject("DeptDropList",departments);
+//		mv.setViewName("addEmployeeForm");
+//		return mv;
+//	}
 	
 	
 	@GetMapping("/")
@@ -62,9 +61,11 @@ public class EmployeeController {
 
 	@GetMapping("showFormEmployee")
 	public ModelAndView showEmployeeForm() {
+		List<Department> departments = depRepo.findAll();
 		ModelAndView mv = new ModelAndView();
 		Employee theEmployee = new Employee();
 		mv.addObject("Employee", theEmployee);
+		mv.addObject("DeptDropList",departments);
 		mv.setViewName("addEmployeeForm");
 		return mv;
 	}
