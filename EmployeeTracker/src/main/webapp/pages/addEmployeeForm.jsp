@@ -4,6 +4,7 @@
     Author     : Jayandra
 --%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE HTML>
 <html>
@@ -29,17 +30,14 @@
         
         <form:hidden path="id"/>  
             <table>
-            <!-- <tr>
-            <td>
-            <label>Id </label></td><td><input type="text" name="id"></td>
-            </tr> -->
+
             <tr>
             <td>
             <label>Employee Name </label></td><td><form:input path="empName" /></td>
              </tr>
             <tr>
             <td>
-            <label>Department </label></td><td><form:input path="empDept"/></td>
+            <label>Employee Email </label></td><td><form:input path="empEmail"/></td>
             </tr>
             
             <tr>
@@ -48,14 +46,9 @@
             <td>
 	            
 				<form:select path="department">
-					
-
-                	<form:option value="NONE" label="--- Select ---"/>
-   					<%-- <form:options items="${DeptObject}" />	 --%>
-					<form:option value="1" label="Web"/>
-					<form:option value="2" label="RND"/>
-           		 	
-				
+                	 <c:forEach var="tempDept" items="${DeptDropList}">
+   						<form:option value="${tempDept.did}" label="${tempDept.deptName}"/>	
+           		 	</c:forEach>
 				</form:select>        
             
             </td>
@@ -70,6 +63,10 @@
         
         <p>
             <a href="listEmployee">Back to Employee List</a>
+        </p>
+        <p>
+        TO SHOW IDS
+        ${Employee}
         </p>
       </div>
     </div>

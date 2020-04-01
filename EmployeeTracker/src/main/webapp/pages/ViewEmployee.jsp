@@ -44,7 +44,7 @@ EMP Dept : ${EmpObject.empDept} --%>
             <tr id="tableBar">
                 <th>Id</th>
                 <th>Name</th>
-                <th>Department</th>
+                <th>Email</th>
                 <th>Action</th>
             </tr>
            <c:forEach var="tempEmp" items="${EmpObject}">
@@ -60,7 +60,7 @@ EMP Dept : ${EmpObject.empDept} --%>
            <tr>
                 <td>${tempEmp.id}</td>
                 <td> ${tempEmp.empName}</td>
-                <td>${tempEmp.empDept}</td>
+                <td>${tempEmp.empEmail} - ${tempEmp.department.deptName}</td>
                 <td><a href="${tempUpdate}">Update</a> | <a href="${tempDelete}" onclick="if(!(confirm('Continue to Delete'))) return false">Delete</a></td>
             </tr>
            

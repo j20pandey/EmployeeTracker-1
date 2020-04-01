@@ -42,17 +42,16 @@ public class EmployeeController {
 		System.out.println("Controller Check");
 	}
 	
-	@ResponseBody
-	public ModelAndView departmentListDetail() {
-		List<Department> department = depRepo.findAll();
-		for(Department dp: department) {
-		System.out.println(dp);
-		}
-		ModelAndView mv = new ModelAndView();
-		mv.addObject("DeptObject",department);
-		mv.setViewName("ViewEmployee");
-		return mv;
-	}
+//	@GetMapping("showFormEmployee")
+//	public ModelAndView departmentListDetail() {
+//		
+//		List<Department> departments = depRepo.findAll();
+//
+//		ModelAndView mv = new ModelAndView();
+//		mv.addObject("DeptDropList",departments);
+//		mv.setViewName("addEmployeeForm");
+//		return mv;
+//	}
 	
 	
 	@GetMapping("/")
@@ -62,9 +61,11 @@ public class EmployeeController {
 
 	@GetMapping("showFormEmployee")
 	public ModelAndView showEmployeeForm() {
+		List<Department> departments = depRepo.findAll();
 		ModelAndView mv = new ModelAndView();
 		Employee theEmployee = new Employee();
 		mv.addObject("Employee", theEmployee);
+		mv.addObject("DeptDropList",departments);
 		mv.setViewName("addEmployeeForm");
 		return mv;
 	}
@@ -72,9 +73,12 @@ public class EmployeeController {
 	@GetMapping("showFormEmployeeUpdate")
 	public ModelAndView showEmployeeFormUpdate(@RequestParam int id) {
 		Optional<Employee> employee = empRepo.findById(id);
+		System.out.println(employee);
+		List<Department> departments = depRepo.findAll();
 		ModelAndView mv = new ModelAndView();
 		
 		mv.addObject("Employee", employee);
+		mv.addObject("DeptDropList",departments);
 		mv.setViewName("addEmployeeForm");
 		return mv;
 	}	
@@ -192,17 +196,17 @@ public class EmployeeController {
 	}
 	
 	
-	@RequestMapping("fetchbyDeptNameSorted")
-	public String fetchEmployeebyDeptSorted(@RequestParam String empDept) {
-		
-		List<Employee> employee = (List<Employee>) empRepo.findBydeptSorted(empDept);
-		
-		for(Employee em :employee) {
-			System.out.println(em);
-		}
-		
-		return "ViewEmployee";
-	}	
+//	@RequestMapping("fetchbyDeptNameSorted")
+//	public String fetchEmployeebyDeptSorted(@RequestParam String empDept) {
+//		
+//		List<Employee> employee = (List<Employee>) empRepo.findBydeptSorted(empDept);
+//		
+//		for(Employee em :employee) {
+//			System.out.println(em);
+//		}
+//		
+//		return "ViewEmployee";
+//	}	
 	
 
 	// from REST API
