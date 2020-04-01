@@ -13,6 +13,7 @@ import javax.persistence.OneToMany;
 @Entity
 public class Department {
 	
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int did;
