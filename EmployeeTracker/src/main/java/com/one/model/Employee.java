@@ -13,7 +13,7 @@ public class Employee {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	private String empName;
-	private String empDept;
+	private String empEmail;
 	
 	@ManyToOne
 	private Department department;
@@ -39,17 +39,18 @@ public class Employee {
 	public void setEmpName(String empName) {
 		this.empName = empName;
 	}
-	public String getEmpDept() {
-		return empDept;
+
+	
+	public String getEmpEmail() {
+		return empEmail;
 	}
-	public void setEmpDept(String empDept) {
-		this.empDept = empDept;
+
+	public void setEmpEmail(String empEmail) {
+		this.empEmail = empEmail;
 	}
-	
-	
-	
+
 	@Override
 	public String toString() {
-		return "Employee [id=" + id + ", empName=" + empName + ", empDept=" + empDept + "]";
+		return "Employee [id=" + id + ", empName=" + empName + ", empEmail=" + empEmail+ "]";
 	}
 }

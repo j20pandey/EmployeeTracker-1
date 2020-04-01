@@ -37,7 +37,7 @@
              </tr>
             <tr>
             <td>
-            <label>Department </label></td><td><form:input path="empDept"/></td>
+            <label>Employee Email </label></td><td><form:input path="empEmail"/></td>
             </tr>
             
             <tr>
@@ -46,14 +46,9 @@
             <td>
 	            
 				<form:select path="department">
-					
-
-                	<form:option value="NONE" label="--- Select ---"/>
                 	 <c:forEach var="tempDept" items="${DeptDropList}">
    						<form:option value="${tempDept.did}" label="${tempDept.deptName}"/>	
-
            		 	</c:forEach>
-				
 				</form:select>        
             
             </td>
@@ -68,6 +63,10 @@
         
         <p>
             <a href="listEmployee">Back to Employee List</a>
+        </p>
+        <p>
+        TO SHOW IDS
+        ${Employee}
         </p>
       </div>
     </div>
